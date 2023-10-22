@@ -14,7 +14,7 @@ if (isset($message)) {
 <header class="header bg-white">
     <section class="flex bg-blue-100 h-16 items-center pr-6 pl-6">
         <a href="dashboard.php" class="logo text-blue-600 text-2xl">Admin<span
-                class="text-blue-600 text-2xl pr-6">Panel</span></a>
+                class="text-blue-600 text-2xl pr-6">Site</span></a>
         <nav class="navbar hidden md:flex md:space-x-4">
             <a href="dashboard.php">home</a>
             <a href="products.php">products</a>
