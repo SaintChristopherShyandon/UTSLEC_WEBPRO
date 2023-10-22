@@ -31,86 +31,75 @@ include 'components/add_cart.php';
 <section class="hero bg-gradient-to-r">
 
    <div class="carousel relative">
-   <div class="carousel-inner">
+      <div class="carousel-inner">
          <div class="carousel-item flex items-center justify-between"> 
-         <div class="content text-white w-1/2 p-4"> 
-            <span class="text-lg text-blue-500">Order Online</span>
-            <h3 class="text-4xl font-bold text-center text-blue-500">Delicious Pizza</h3>
-            <a href="menu.php" class="btn bg-blue-100 hover:bg-blue-200 text-blue-600 py-2 px-4 rounded-full mt-4">See Menus</a>
+            <div class="content text-white w-1/2 p-4"> 
+               <h3 class="text-4xl font-bold text-center text-blue-500">Delicious Pizza</h3>
+               <div class="image w-1/2"> 
+                  <img src="images/home-img-1.png" alt="" class="w-80">
+               </div>
+            </div>
          </div>
-         <div class="image w-1/2"> 
-            <img src="images/home-img-1.png" alt="" class="w-80">
-         </div>
-      </div>
 
-      <div class="carousel-item flex items-center"> 
-         <div class="content text-white w-1/2 p-4">
-            <span class="text-lg text-blue-500">Order Online</span>
-            <h3 class="text-4xl font-bold text-center text-blue-500">Cheesy Hamburger</h3>
-            <a href="menu.php" class="btn bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded-full mt-4">See Menus</a>
+         <div class="carousel-item flex items-center"> 
+            <div class="content text-white w-1/2 p-4">
+               <h3 class="text-4xl font-bold text-center text-blue-500">Cheesy Hamburger</h3>
+            </div>
+            <div class="image w-1/2"> 
+               <img src="images/home-img-2.png" alt="" class="w-80">
+            </div>
          </div>
-         <div class="image w-1/2"> 
-            <img src="images/home-img-2.png" alt="" class="w-80">
-         </div>
-      </div>
 
-      <div class="carousel-item flex items-center"> 
-         <div class="content text-white w-1/2 p-4"> 
-            <span class="text-lg text-blue-500">Order Online</span>
-            <h3 class="text-4xl font-bold text-center text-blue-500">Roasted Chicken</h3>
-            <a href="menu.php" class="btn bg-yellow-400 hover:bg-yellow-500 text-white py-2 px-4 rounded-full mt-4">See Menus</a>
+         <div class="carousel-item flex items-center"> 
+            <div class="content text-white w-1/2 p-4"> 
+               <h3 class="text-4xl font-bold text-center text-blue-500">Roasted Chicken</h3>
+            </div>
+            <div class="image w-1/2"> 
+               <img src="images/home-img-3.png" alt="" class="w-80">
+            </div>
          </div>
-         <div class="image w-1/2"> 
-            <img src="images/home-img-3.png" alt="" class="w-80">
-         </div>
-      </div>
    </div>
 
-   <div class="carousel-controls absolute top-0 left-0 right-0 bottom-0 w-full flex items-center justify-between opacity-0 hover:opacity-100 transition-opacity duration-300">
-      <button class="carousel-control-prev text-4xl text-white hover:text-yellow-400 p-2">‹</button>
-      <button class="carousel-control-next text-4xl text-white hover:text-yellow-400 p-2">›</button>
+   <div class="carousel-controls absolute top-0 left-0 right-0 bottom-0 w-full flex items-center justify-between">
+      <button class="carousel-control-prev text-4xl text-blue-500 hover:text-blue-700 p-2">‹</button>
+      <button class="carousel-control-next text-4xl text-blue-500 hover:text-blue-700 p-2">›</button>
    </div>
-</div>
+</section>
 
 <section class="bg-blue-100 py-12">
-   <div class="container mx-auto">
-      <h1 class="text-3xl font-bold text-center mb-8">Kategori Makanan</h1>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-         <!-- Card 1: Makanan Cepat Saji -->
-         <a href="category.php" class="block">
-            <div class="bg-white p-6 rounded-lg shadow-md text-center hover:bg-blue-200">
-               <img src="images/cat-1.png" alt="Fast Food" class="w-24 mx-auto mb-4">
-               <h3 class="text-xl font-semibold mb-2">Makanan Cepat Saji</h3>
-               <p>Sejenis makanan yang disajikan dan disiapkan dengan cepat, dan dalam waktu yang singkat.</p>
-            </div>
-         </a>
+   <h1 class="text-3xl font-bold text-center -mt-6 mb-8">Kategori Makanan</h1>
+   <div class="container mx-auto flex justify-between gap-8">
 
-         <!-- Card 2: Hidangan Utama -->
-         <a href="category.php" class="block">
-            <div class="bg-white p-6 rounded-lg shadow-md text-center hover:bg-blue-200">
-               <img src="images/cat-2.png" alt="Main Dishes" class="w-24 mx-auto mb-4">
-               <h3 class="text-xl font-semibold mb-2">Hidangan Utama</h3>
-               <p>Hidangan yang biasanya menjadi fokus utama dalam suatu waktu makan.</p>
-            </div>
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+         <img src="images/cat-1.png" alt="" class="w-20 mx-auto block">
+         <a href="#">
+            <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Makanan Cepat Saji</h5>
          </a>
+         <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Makanan yang disajikan dan disiapkan dengan cepat dalam waktu yang singkat</p>
+      </div>
 
-         <!-- Card 3: Minuman -->
-         <a href="category.php" class="block">
-            <div class="bg-white p-6 rounded-lg shadow-md text-center hover:bg-blue-200">
-               <img src="images/cat-3.png" alt="Drinks" class="w-24 mx-auto mb-4">
-               <h3 class="text-xl font-semibold mb-2">Minuman</h3>
-               <p>Segala jenis cairan yang dikonsumsi untuk menghilangkan dahaga, memberikan nutrisi, atau sekadar kenikmatan rasa.</p>
-            </div>
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+         <img src="images/cat-2.png" alt="" class="w-20 mx-auto block">
+         <a href="#">
+            <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Hidangan Utama</h5>
          </a>
+         <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Hidangan yang biasanya menjadi fokus utama dalam suatu waktu makan</p>
+      </div>
 
-         <!-- Card 4: Makanan Penutup -->
-         <a href="category.php" class="block">
-            <div class="bg-white p-6 rounded-lg shadow-md text-center hover:bg-blue-200">
-               <img src="images/cat-4.png" alt="Desserts" class="w-24 mx-auto mb-4">
-               <h3 class="text-xl font-semibold mb-2">Makanan Penutup</h3>
-               <p>Hidangan yang biasanya disajikan setelah hidangan utama untuk menyegarkan mulut dan memberikan kenikmatan manis sebagai penutup makanan.</p>
-            </div>
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+         <img src="images/cat-3.png" alt="" class="w-20 mx-auto block">
+         <a href="#">
+            <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Minuman</h5>
          </a>
+         <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Segala jenis cairan yang dikonsumsi untuk menghilangkan dahaga, memberikan nutrisi, atau sekedar kenikmatan rasa</p>
+      </div>
+
+      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+         <img src="images/cat-4.png" alt="" class="w-20 mx-auto block">
+         <a href="#">
+            <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Makanan Penutup</h5>
+         </a>
+         <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Hidangan yang disajikan setelah hidangan utama untuk menyegarkan mulut dan memberikan kenikmatan manis setelah makan</p>
       </div>
    </div>
 </section>

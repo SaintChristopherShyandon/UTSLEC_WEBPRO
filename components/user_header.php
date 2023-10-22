@@ -25,10 +25,8 @@ if(isset($message)){
          <a href="contact.php" class="text-white hover:underline p-4">Contact</a>
       </nav>
 
-      <div>
-         <button>Log in</button>
-         <button class="font-semibold text-white text-sm text-center bg-blue-500 hover:bg-blue-700 rounded-full px-5 py-2.5">Sign Up</button>
-      </div>
+      <button class="font-semibold text-white text-sm mr-4">Log in</button>
+      <button class="font-semibold text-white text-sm text-center bg-blue-500 hover:bg-blue-700 rounded-full px-5 py-2.5">Sign Up</button>
 
    </section>
 
