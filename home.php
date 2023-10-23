@@ -29,42 +29,12 @@ include 'components/add_cart.php';
 <?php include 'components/user_header.php'; ?>
 
 <section class="hero bg-gradient-to-r">
-
-   <div class="carousel relative">
-      <div class="carousel-inner">
-         
-         <div class="carousel-item flex items-center justify-between"> 
-            <div class="content text-white w-1/2 p-4"> 
-               <h3 class="text-4xl font-bold text-center text-blue-500">Delicious Pizza</h3>
-               <div class="image w-1/2"> 
-                  <img src="images/home-img-1.png" alt="" class="w-80">
-               </div>
-            </div>
-         </div>
-
-         <div class="carousel-item flex items-center"> 
-            <div class="content text-white w-1/2 p-4">
-               <h3 class="text-4xl font-bold text-center text-blue-500">Cheesy Hamburger</h3>
-            </div>
-            <div class="image w-1/2"> 
-               <img src="images/home-img-2.png" alt="" class="w-80">
-            </div>
-         </div>
-
-         <div class="carousel-item flex items-center"> 
-            <div class="content text-white w-1/2 p-4"> 
-               <h3 class="text-4xl font-bold text-center text-blue-500">Roasted Chicken</h3>
-            </div>
-            <div class="image w-1/2"> 
-               <img src="images/home-img-3.png" alt="" class="w-80">
-            </div>
-         </div>
-   </div>
-
-   <div class="carousel-controls absolute top-0 left-0 right-0 bottom-0 w-full flex items-center justify-between">
-      <button class="carousel-control-prev text-4xl text-blue-500 hover:text-blue-700 p-2">‹</button>
-      <button class="carousel-control-next text-4xl text-blue-500 hover:text-blue-700 p-2">›</button>
-   </div>
+      <div class="image-container relative w-1/2">
+         <img src="images/home-img-1.png" alt="" class="w-80" id="foodImage">
+      </div>
+      <div class="content text-white w-1/2 p-4">
+         <h3 class="text-4xl font-bold text-center text-blue-500" id="foodTitle">Nasi Goreng Maknyus</h3>
+      </div>
 </section>
 
 <section class="bg-blue-100 py-12">
@@ -72,10 +42,10 @@ include 'components/add_cart.php';
    
    <div class="container mx-auto flex justify-between gap-4">
 
-      <a href="category.php class="block"">
+      <a href="category.php" class="block">
          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 transition-all duration-300">
             <img src="images/cat-1.png" alt="" class="w-20 mx-auto block">
-            <a href="#">
+            <a href="category.php">
                <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Makanan Cepat Saji</h5>
             </a>
             <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Makanan yang disajikan dan disiapkan dengan cepat dalam waktu yang singkat</p>
@@ -85,7 +55,7 @@ include 'components/add_cart.php';
       <a href="category.php">
          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 transition-all duration-300">
             <img src="images/cat-2.png" alt="" class="w-20 mx-auto block">
-            <a href="#">
+            <a href="category.php">
                <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Hidangan Utama</h5>
             </a>
             <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Hidangan yang biasanya menjadi fokus utama dalam suatu waktu makan</p>
@@ -95,7 +65,7 @@ include 'components/add_cart.php';
       <a href="category.php">    
          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 transition-all duration-300">
             <img src="images/cat-3.png" alt="" class="w-20 mx-auto block">
-            <a href="#">
+            <a href="category.php">
                <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Minuman</h5>
             </a>
             <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Segala jenis cairan yang dikonsumsi untuk menghilangkan dahaga, memberikan nutrisi, atau sekedar kenikmatan rasa</p>
@@ -105,7 +75,7 @@ include 'components/add_cart.php';
       <a href="category.php">       
          <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 transition-all duration-300">
             <img src="images/cat-4.png" alt="" class="w-20 mx-auto block">
-            <a href="#">
+            <a href="category.php">
                <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Makanan Penutup</h5>
             </a>
             <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Hidangan yang disajikan setelah hidangan utama untuk menyegarkan mulut dan memberikan kenikmatan manis setelah makan</p>
@@ -161,41 +131,29 @@ include 'components/add_cart.php';
 <?php include 'components/footer.php'; ?>
 
 <script>
-   const carouselItems = document.querySelectorAll('.carousel-item');
-   let currentSlide = 0;
+      // List images dan title
+      const images = [
+         { src: "images/home-img-1.png", title: "Nasi Goreng Maknyus" },
+         { src: "images/home-img-2.png", title: "Es Podeng Seger" },
+         { src: "images/home-img-3.png", title: "Es Teh Manis" }
+      ];
 
-   function showSlide(slideIndex) {
-      if (slideIndex < 0) {
-         currentSlide = carouselItems.length - 1;
-      } else if (slideIndex >= carouselItems.length) {
-         currentSlide = 0;
+      // Function untuk update image dan title
+      function updateImage() {
+         const randomIndex = Math.floor(Math.random() * images.length);
+         const foodImage = document.getElementById("foodImage");
+         const foodTitle = document.getElementById("foodTitle");
+
+         foodImage.src = images[randomIndex].src;
+         foodTitle.textContent = images[randomIndex].title;
       }
 
-      carouselItems.forEach((item, index) => {
-         if (index === currentSlide) {
-            item.style.display = 'block';
-         } else {
-            item.style.display = 'none';
-         }
-      });
-   }
+      // Update image setiap 3 seconds (3000 milliseconds)
+      setInterval(updateImage, 3000);
 
-   showSlide(currentSlide);
-
-   const prevButton = document.querySelector('.carousel-control-prev');
-   const nextButton = document.querySelector('.carousel-control-next');
-
-   prevButton.addEventListener('click', () => {
-      currentSlide--;
-      showSlide(currentSlide);
-   });
-
-   nextButton.addEventListener('click', () => {
-      currentSlide++;
-      showSlide(currentSlide);
-   });
-
-</script>
+      // Initial image update
+      updateImage();
+   </script>
 
 
 </body>

@@ -84,11 +84,11 @@ $grand_total = 0;
             <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="" class="w-24 h-24 mx-auto">
             <div class="text-xl font-semibold mt-2"><?= $fetch_cart['name']; ?></div>
             <div class="flex items-center mt-2">
-               <div class="text-blue-600 text-xl font-semibold">$<?= $fetch_cart['price']; ?></div>
-               <input type="number" name="qty" class="ml-2 border border-gray-300 p-2 rounded-md w-12" min="1" max="99" value="<?= $fetch_cart['quantity']; ?>" maxlength="2">
+               <div class="text-blue-600 text-xl font-semibold">Rp.<?= $fetch_cart['price']; ?></div>
+               <input type="number" name="qty" class="ml-2 border border-gray-300 p-2 rounded-md w-12" min="1.000" max="99.000.000" value="<?= $fetch_cart['quantity']; ?>" maxlength="5">
                <button type="submit" class="fas fa-edit text-blue-600 ml-2" name="update_qty"></button>
             </div>
-            <div class="text-xl font-semibold mt-2">Subtotal: $<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?></div>
+            <div class="text-xl font-semibold mt-2">Subtotal: Rp.<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?></div>
          </form>
          <?php
                   $grand_total += $sub_total;
@@ -99,7 +99,7 @@ $grand_total = 0;
          ?>
       </div>
 
-      <div class="text-2xl font-semibold mt-8 mb-3">Cart Total: $<?= $grand_total; ?></div>
+      <div class="text-2xl font-semibold mt-8 mb-3">Cart Total: Rp.<?= $grand_total; ?></div>
       <a href="checkout.php" class="btn bg-black text-white p-2 px-5 font-semibold  rounded-full bg-blue-500 <?= ($grand_total > 1) ? '' : 'cursor-not-allowed' ?>">Proceed to Checkout</a>
 
       <div class="mt-8 text-center">

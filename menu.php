@@ -70,7 +70,7 @@ include 'components/add_cart.php';
          <div class="text-lg font-semibold text-gray-800 mt-2"><?= $fetch_products['name']; ?></div>
          <div class="flex items-center mt-2">
             <div class="text-xl font-semibold text-gray-800">
-               <span class="text-gray-500">$</span><?= $fetch_products['price']; ?>
+               <span class="text-gray-500">Rp.</span><?= $fetch_products['price']; ?>
             </div>
             <input type="number" name="qty" class="ml-4 border text-gray-800" min="1" max="99" value="1" maxlength="2">
          </div>
