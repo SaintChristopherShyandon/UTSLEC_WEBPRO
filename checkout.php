@@ -25,6 +25,7 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if (isset($_POST['submit'])) {
+
     $name = $_POST['name'];
     $name = filter_var($name, FILTER_SANITIZE_STRING);
     $number = $_POST['number'];
@@ -42,19 +43,21 @@ if (isset($_POST['submit'])) {
     $check_cart->execute([$user_id]);
 
     if ($check_cart->rowCount() > 0) {
+
         if ($address == '') {
-            $message[] = 'Please add your address!';
+            $message[] = 'please add your address!';
         } else {
-            $insert_order = $conn->prepare("INSERT INTO `orders` (user_id, name, number, email, method, address, total_products, total_price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+
+            $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
             $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
 
             $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
             $delete_cart->execute([$user_id]);
 
-            $message[] = 'Order placed successfully!';
+            $message[] = 'order placed successfully!';
         }
     } else {
-        $message[] = 'Your cart is empty';
+        $message[] = 'your cart is empty';
     }
 }
 ?>
@@ -118,7 +121,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <p class="grand-total text-left">
-                    <span class="name">Grand Total:</span>
+                    <span class="name">Total Keseluruhan:</span>
                     <span class="price">RP<?= number_format($grand_total, 0, ',', '.'); ?>,000</span>
                 </p>
 
@@ -137,7 +140,7 @@ if (isset($_POST['submit'])) {
                         class="btn bg-transparent hover:bg-transparent text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 text-white py-2 px-4 rounded-full mt-4">Update
                         Info</a>
 
-                    <h3 class="text-xl font-semibold mt-4">Delivery Address</h3>
+                    <h3 class="text-xl font-semibold mt-4">Alamat Pengiriman</h3>
                     <p><i class="fas fa-map-marker-alt"></i><span><?php
                             if ($fetch_profile['address'] == '') {
                                 echo 'Please enter your address';
@@ -149,20 +152,18 @@ if (isset($_POST['submit'])) {
                         class="btn bg-transparent hover:bg-transparent text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 text-white py-2 px-4 rounded-full mt-4">Update
                         Address</a>
 
-                    <label class="block mt-4">Select Payment Method
+                    <label class="block mt-4">
                         <select name="method" class="input mt-1" required>
-                            <option value="" disabled selected>Select Payment Method --</option>
-                            <option value="cash on delivery">Cash on Delivery</option>
-                            <option value="credit card">Credit Card</option>
-                            <option value="paytm">Paytm</option>
-                            <option value="paypal">PayPal</option>
+                            <option value="" disabled selected>Pilih Metode Pembayaran</option>
+                            <option value="cod">Bayar Langsung</option>
+                            <option value="debit-card">Debit Card</option>
+                            <option value="qr-code">QR Code</option>
+                            <option value="pay-later">PayLater</option>
                         </select>
                     </label>
-
-                    <input type="submit" value="Place Order" name="submit" class="btn <?php if ($fetch_profile['address'] == '') {
-                               echo 'cursor-not-allowed';
-                           } ?> block w-full mt-4" style="background: var(--red); color: var(--white);">
-
+                    <input type="submit" value="Place Order" name="submit" class="btn bg-transparent hover:bg-transparent text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 text-white py-2 px-4 rounded-full mt-4 <?php if ($fetch_profile['address'] == '') {
+                        echo 'cursor-not-allowed';
+                    } ?>" style="width: 100%; background: var(--red); color: var(--white);">
                 </div>
             </form>
         </div>

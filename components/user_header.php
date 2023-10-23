@@ -2,24 +2,25 @@
 if (isset($message)) {
     foreach ($message as $message) {
         echo '
-        <div class="message">
+        <div class="message text-center text-blue-600">
             <span>' . $message . '</span>
-            <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
+            <i class="fas fa-times ml-3" onclick="this.parentElement.remove();"></i>
         </div>
         ';
     }
 }
 ?>
+<!-- Header Section -->
 <header class="bg-blue-600 p-4">
     <section class="container mx-auto flex items-center justify-between">
-        <a href="home.php" class="text-2xl font-bold text-white">Webpro Resto</a>
+        <a href="home.php" class="text-2xl font-bold text-white">Webpro Resto Kelompok 5 - B</a>
         <div class="hidden md:flex md:items-center">
-            <nav class="text-center">
-                <a href="home.php" class="text-white hover:underline p-2">Home</a>
-                <a href="about.php" class="text-white hover:underline p-2">About</a>
-                <a href="menu.php" class="text-white hover:underline p-2">Menu</a>
-                <a href="orders.php" class="text-white hover:underline p-2">Orders</a>
-                <a href="contact.php" class="text-white hover:underline">Contact</a>
+            <nav class="text-center md:text-left">
+                <a href="home.php" class="text-white hover:underline p-2 text-sm md:text-base">Home</a>
+                <a href="about.php" class="text-white hover:underline p-2 text-sm md:text-base">About</a>
+                <a href="menu.php" class="text-white hover:underline p-2 text-sm md:text-base">Menu</a>
+                <a href="orders.php" class="text-white hover:underline p-2 text-sm md:text-base">Orders</a>
+                <a href="contact.php" class="text-white hover:underline text-sm md:text-base">Contact</a>
             </nav>
             <a href="search.php" class="text-white hover:text-gray-200 p-3"><i class="fas fa-search"></i></a>
             <a href="cart.php" class="text-white hover:text-gray-200 p-3"><i class="fa fa-shopping-basket"></i></a>
@@ -34,21 +35,22 @@ if (isset($message)) {
             $select_profile->execute([$user_id]);
             if ($select_profile->rowCount() > 0) {
                 $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
-                echo '<p class="text-white hidden sm:block">Hi! ' . $fetch_profile['name'] . '</p>'; // Show on small screens
+                echo '<p class="text-white hidden sm:block">Hi! ' . $fetch_profile['name'] . '</p>';
             }
         }
         ?>
         <div id="userDropdown"
-            class="relative right-1 left-4 hidden sm:flex md:flex sm:flex-col md:flex-row md:items-center sm:space-y-2 md:space-x-4 bg-white text-black rounded shadow-md p-2">
-            <a href="profile.php" class="hover:underline md:pt-1.5">Profile</a>
+            class="relative right-1 left-4 hidden sm:flex md:flex sm:flex-col md:flex-row md:items-center sm:space-y-2 md:space-x-4 bg-blue-100 text-black rounded shadow-md p-2">
+            <a href="profile.php" class="hover:underline md:pt-1.5"><i class="fas fa-user alt"></i></a>
             <a href="components/user_logout.php button" onclick="return confirm('Logout from this website?');"
-                class="hover:underline">Logout</a>
+                class="text-red hover:underline ">Logout</a>
             <a href="login.php" class="hover:underline">Login</a>
             <a href="register.php" class="hover:underline">Register</a>
         </div>
         <div id="userIcon" class="sm:hidden text-white p-3 cursor-pointer">☰</div>
     </section>
 </header>
+
 
 <script>
 const userIcon = document.getElementById('userIcon');

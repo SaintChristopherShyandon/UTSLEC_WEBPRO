@@ -55,11 +55,13 @@ $grand_total = 0;
 <?php include 'components/user_header.php'; ?>
 <!-- Header section ends -->
 
-<div class="bg-gray-100 py-12">
-    <div class="container mx-auto text-center">
-        <h3 class="text-3xl font-bold">Keranjang Belanja</h3>
-        <p class="mt-2"><a href="home.php">Home</a> / Cart</p>
-    </div>
+<div class="bg-gray-200 p-4">
+   <h3 class="text-2xl text-center">Keranjang Belanja</h3>
+   <p class="mt-2 text-center">
+      <a href="home.php">Home</a>
+      <span class="mx-2">/</span>
+      <span>Keranjang</span>
+   </p>
 </div>
 
 <!-- Shopping cart section starts -->
@@ -98,7 +100,7 @@ $grand_total = 0;
             ?>
         </div>
 
-        <div class="text-2xl font-semibold mt-8 mb-3">Cart Total: Rp.<?= $grand_total; ?></div>
+        <div class="text-2xl font-semibold mt-8 mb-3">Cart Total: Rp.<?= $grand_total; ?>,000</div>
         <a href="checkout.php" class="btn bg-black text-white p-2 px-5 font-semibold  rounded-full bg-blue-500 <?= ($grand_total > 1) ? '' : 'cursor-not-allowed' ?>">Proceed to Checkout</a>
 
         <div class="mt-8 text-center">
