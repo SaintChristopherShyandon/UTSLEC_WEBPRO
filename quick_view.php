@@ -40,17 +40,19 @@ include 'components/add_cart.php';
       $select_products->execute([$pid]);
       if($select_products->rowCount() > 0){
          while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
+            $product_description = $fetch_products['deskripsi'];
    ?>
    <form action="" method="post" class="box bg-white p-4 shadow-md rounded-md">
       <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
       <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
       <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
-      <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+      <img src="resto-images/<?= $fetch_products['image']; ?>" alt="">
       <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat"><?= $fetch_products['category']; ?></a>
       <div class="name"><?= $fetch_products['name']; ?></div>
+      <p class="text-gray-600 mt-2"><?= $product_description ?></p>
       <div class="flex justify-between items-center">
-         <div class="price text-2xl font-semibold"><span>$</span><?= $fetch_products['price']; ?></div>
+         <div class="price text-2xl font-semibold"><span>Rp.</span><?= $fetch_products['price']; ?></div>
          <input type="number" name="qty" class="qty w-16 p-2 border border-gray-300 rounded-md" min="1" max="99" value="1" maxlength="2">
       </div>
       <button type="submit" name="add_to_cart" class="cart-btn bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">Add to Cart</button>

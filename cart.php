@@ -81,7 +81,7 @@ $grand_total = 0;
             <input type="hidden" name="cart_id" value="<?= $fetch_cart['id']; ?>">
             <a href="quick_view.php?pid=<?= $fetch_cart['pid']; ?>" class="fas fa-eye text-blue-600"></a>
             <button type="submit" class="fas fa-times text-red-600" name="delete" onclick="return confirm('Delete this item?');"></button>
-            <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="" class="w-24 h-24 mx-auto">
+            <img src="resto-images/<?= $fetch_cart['image']; ?>" alt="" class="w-24 h-24 mx-auto">
             <div class="text-xl font-semibold mt-2"><?= $fetch_cart['name']; ?></div>
             <div class="flex items-center mt-2">
                <div class="text-blue-600 text-xl font-semibold">Rp.<?= $fetch_cart['price']; ?></div>

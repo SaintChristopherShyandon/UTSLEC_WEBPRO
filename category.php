@@ -11,6 +11,14 @@ if(isset($_SESSION['user_id'])){
 
 include 'components/add_cart.php';
 
+// Ambil nilai 'category' dari query string
+if (isset($_GET['category'])) {
+    $category = $_GET['category'];
+} else {
+    // Atur nilai default jika 'category' tidak tersedia
+    $category = 'Default Category';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -30,10 +38,9 @@ include 'components/add_cart.php';
 <?php include 'components/user_header.php'; ?>
 
 <section class="bg-gray-100 p-12">
-   <h1 class="text-3xl font-bold text-center mb-8">Food Category</h1>
+   <h1 class="text-3xl font-bold text-center mb-8">Food Category: <?= $category ?></h1>
    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
       <?php
-         $category = $_GET['category'];
          $select_products = $conn->prepare("SELECT * FROM `products` WHERE category = ?");
          $select_products->execute([$category]);
          if($select_products->rowCount() > 0){
@@ -46,7 +53,7 @@ include 'components/add_cart.php';
          <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
          <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>" class="fas fa-eye"></a>
          <button type="submit" class="fas fa-shopping-cart" name="add_to_cart"></button>
-         <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+         <img src="resto-images/<?= $fetch_products['image']; ?>" alt="">
          <div class="name"><?= $fetch_products['name']; ?></div>
          <div class="flex">
             <div class="price"><span>$</span><?= $fetch_products['price']; ?></div>

@@ -84,48 +84,38 @@ include 'components/add_cart.php';
    </div>
 </section>
 
-
-<section class="products text-center mx-auto w-fit p-12 bg-white">
-
-   <h1 class="title  text-3xl font-bold text-gray-800 mb-8">Hidangan Terbaru</h1>
+<section class="text-center py-12">
+   <h1 class="text-3xl font-bold text-gray-800 mb-8">Hidangan Terbaru</h1>
 
    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      
-      <?php
+   <?php
          $select_products = $conn->prepare("SELECT * FROM `products` LIMIT 6");
          $select_products->execute();
          if($select_products->rowCount() > 0){
             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
       ?>
-      <form action="" method="post" class="box bg-white p-4 shadow-md rounded-md">
+      <form action="" method="post" class="relative bg-white p-4 shadow-md rounded-md">
          <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
          <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
-         <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
          <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
-         <div class="h-fit group mb-4">
-            <div class="relative overflow-hidden">
-               <!-- ini nanti fotonya ganti pake yang di database ya -->
-               <img src="images/dhawy.jpg" alt="">
-               <div class="absolute h-full w-full bg-black bg-opacity-0 flex items-center justify-center -bottom-0 group-hover:bg-opacity-20 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <a href=""><button class="bg-black text-white p-2 px-5 font-semibold  rounded-full bg-blue-500">View details</button></a>
-               </div>
-            </div>
-         </div>
-         <a href="category.php?category=<?= $fetch_products['category']; ?>" class="cat text-gray-600"><?= $fetch_products['category']; ?></a>
-         <div class="name text-lg font-semibold text-gray-800 mt-2"><?= $fetch_products['name']; ?></div>
+         <img src="resto-images/<?= $fetch_products['image']; ?>" alt="">
+         <a href="category.php?category=<?= $fetch_products['category']; ?>" class="text-gray-600">
+            <?= $fetch_products['category']; ?>
+         </a>
+         <div class="text-lg font-semibold text-gray-800 mt-2"><?= $fetch_products['name']; ?></div>
+         <a href="menu.php" class="hover-button absolute inset-12 opacity-0 flex items-center justify-center text-white bg-blue-300 rounded-full transition-opacity duration-300 hover:opacity-100">
+            View Details
+         </a>
       </form>
       <?php
             }
          } else {
-            echo '<p class="empty text-2xl text-gray-800">No products added yet!</p>';
+            echo '<p class="text-2xl text-gray-800">No products added yet!</p>';
          }
       ?>
-
    </div>
-   <a href="menu.php" ><button class="mt-9 -mb-2 font-semibold text-white text-sm text-center bg-blue-500 hover:bg-blue-700 rounded-full px-5 py-2.5">View All</button></a>
-</div>
-
 </section>
+
 
 
 <?php include 'components/footer.php'; ?>

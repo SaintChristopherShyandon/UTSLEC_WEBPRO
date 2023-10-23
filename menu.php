@@ -46,11 +46,12 @@ include 'components/add_cart.php';
 
    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
-   <?php
+      <?php
          $select_products = $conn->prepare("SELECT * FROM `products` LIMIT 6");
          $select_products->execute();
          if($select_products->rowCount() > 0){
             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
+               $product_description = $fetch_products['deskripsi'];
       ?>
       <form action="" method="post" class="bg-white p-4 shadow-md rounded-md">
          <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
@@ -63,11 +64,12 @@ include 'components/add_cart.php';
          <button type="submit" class="text-blue-600 text-xl" name="add_to_cart">
             <i class="fas fa-shopping-cart"></i>
          </button>
-         <img src="uploaded_img/<?= $fetch_products['image']; ?>" alt="">
+         <img src="resto-images/<?= $fetch_products['image']; ?>" alt="">
          <a href="category.php?category=<?= $fetch_products['category']; ?>" class="text-gray-600">
             <?= $fetch_products['category']; ?>
          </a>
          <div class="text-lg font-semibold text-gray-800 mt-2"><?= $fetch_products['name']; ?></div>
+         <p class="text-gray-600 mt-2"><?= $product_description ?></p>
          <div class="flex items-center mt-2">
             <div class="text-xl font-semibold text-gray-800">
                <span class="text-gray-500">Rp.</span><?= $fetch_products['price']; ?>
