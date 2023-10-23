@@ -51,42 +51,51 @@ if(isset($_POST['submit'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>register</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>register</title>
 
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <!-- Tailwind CSS link -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css">
+    <!-- Tailwind CSS link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css">
 
 </head>
+
 <body class="bg-gray-100">
-   
-<!-- header section starts  -->
-<?php include 'components/user_header.php'; ?>
-<!-- header section ends -->
 
-<section class="flex justify-center items-center min-h-screen">
-   <form action="" method="post" class="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
-      <h3 class="text-2xl font-bold mb-4">Register Now</h3>
-      <input type="text" name="name" required placeholder="Enter your name" class="w-full p-2 mb-2 border border-gray-300 rounded">
-      <input type="email" name="email" required placeholder="Enter your email" class="w-full p-2 mb-2 border border-gray-300 rounded" maxlength="50">
-      <input type="number" name="number" required placeholder="Enter your number" class="w-full p-2 mb-2 border border-gray-300 rounded" min="0" max="9999999999" maxlength="10">
-      <input type="password" name="pass" required placeholder="Enter your password" class="w-full p-2 mb-2 border border-gray-300 rounded" maxlength="50">
-      <input type="password" name="cpass" required placeholder="Confirm your password" class="w-full p-2 mb-2 border border-gray-300 rounded" maxlength="50">
-      <input type="submit" value="Register Now" name="submit" class="w-full bg-blue-500 text-white py-2 rounded cursor-pointer">
-      <p class="mt-2 text-sm">Already have an account? <a href="login.php" class="text-blue-500">Login Now</a></p>
-   </form>
-</section>
+    <!-- header section starts  -->
+    <?php include 'components/user_header.php'; ?>
+    <!-- header section ends -->
 
-<?php include 'components/footer.php'; ?>
+    <section class="flex justify-center items-center min-h-screen">
+        <form action="" method="post" class="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
+            <h3 class="text-2xl font-bold mb-4">Register Now</h3>
+            <input type="text" name="name" required placeholder="Enter your name"
+                class="w-full p-2 mb-2 border border-gray-300 rounded">
+            <input type="email" name="email" required placeholder="Enter your email"
+                class="w-full p-2 mb-2 border border-gray-300 rounded" maxlength="50">
+            <input type="number" name="number" required placeholder="Enter your number"
+                class="w-full p-2 mb-2 border border-gray-300 rounded">
+            <input type="password" name="pass" required placeholder="Enter your password"
+                class="w-full p-2 mb-2 border border-gray-300 rounded" maxlength="50">
+            <input type="password" name="cpass" required placeholder="Confirm your password"
+                class="w-full p-2 mb-2 border border-gray-300 rounded" maxlength="50">
+            <input type="submit" value="Register Now" name="submit"
+                class="w-full bg-blue-500 text-white py-2 rounded cursor-pointer">
+            <p class="mt-2 text-sm">Already have an account? <a href="login.php" class="text-blue-500">Login Now</a></p>
+        </form>
+    </section>
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+    <?php include 'components/footer.php'; ?>
+
+    <!-- custom js file link  -->
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>
