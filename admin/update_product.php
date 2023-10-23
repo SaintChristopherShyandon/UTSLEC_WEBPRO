@@ -31,7 +31,7 @@ if(isset($_POST['update'])){
    $image = filter_var($image, FILTER_SANITIZE_STRING);
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = '../uploaded_img/'.$image;
+   $image_folder = '../resto-images/'.$image;
 
    if(!empty($image)){
       if($image_size > 2000000){
@@ -40,7 +40,7 @@ if(isset($_POST['update'])){
          $update_image = $conn->prepare("UPDATE `products` SET image = ? WHERE id = ?");
          $update_image->execute([$image, $pid]);
          move_uploaded_file($image_tmp_name, $image_folder);
-         unlink('../uploaded_img/'.$old_image);
+         unlink('../resto-images/'.$old_image);
          $message[] = 'image updated!';
       }
    }
@@ -76,7 +76,7 @@ if(isset($_POST['update'])){
             class="max-w-md mx-auto bg-white rounded p-4 border shadow-md">
             <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
             <input type="hidden" name="old_image" value="<?= $fetch_products['image']; ?>">
-            <img src="../uploaded_img/<?= $fetch_products['image']; ?>" alt="" class="mb-4">
+            <img src="../resto-images/<?= $fetch_products['image']; ?>" alt="" class="mb-4">
             <span>Update Name</span>
             <input type="text" required placeholder="Enter product name" name="name" maxlength="100"
                 class="bg-gray-200 p-2 rounded w-full mb-2" value="<?= $fetch_products['name']; ?>">

@@ -27,7 +27,7 @@ if (!isset($admin_id)) {
 
     <?php include '../components/admin_header.php' ?>
 
-    <section class="dashboard">
+    <section class="dashboard mb-10">
 
         <h1 class="text-blue-600 text-3xl mb-8 pl-6 pt-6">Dashboard</h1>
 
@@ -36,38 +36,6 @@ if (!isset($admin_id)) {
                 <h3 class="text-2xl mb-2">Welcome!</h3>
                 <p><?= $fetch_profile['name']; ?></p>
                 <a href="update_profile.php" class="btn bg-blue-100 text-blue-600">Update Profile</a>
-            </div>
-
-            <div class="bg-white border border-black rounded-lg p-4 text-center">
-                <?php
-                $total_pendings = 0;
-                $select_pendings = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
-                $select_pendings->execute(['pending']);
-                while ($fetch_pendings = $select_pendings->fetch(PDO::FETCH_ASSOC)) {
-                    $total_pendings += $fetch_pendings['total_price'];
-                }
-                ?>
-                <h3 class="text-2xl mb-2">
-                    <span>Rp.</span><?= $total_pendings; ?>
-                </h3>
-                <p class="mb-2">Total Pendings</p>
-                <a href="placed_orders.php" class="btn bg-blue-100 text-blue-600">See Orders</a>
-            </div>
-
-            <div class="bg-white border border-black rounded-lg p-4 text-center">
-                <?php
-                $total_completes = 0;
-                $select_completes = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
-                $select_completes->execute(['completed']);
-                while ($fetch_completes = $select_completes->fetch(PDO::FETCH_ASSOC)) {
-                    $total_completes += $fetch_completes['total_price'];
-                }
-                ?>
-                <h3 class="text-2xl mb-2">
-                    <span>Rp.</span><?= $total_completes; ?>
-                </h3>
-                <p class="mb-2">Total Completes</p>
-                <a href="placed_orders.php" class="btn bg-blue-100 text-blue-600">See Orders</a>
             </div>
 
             <div class="bg-white border border-black rounded-lg p-4 text-center">

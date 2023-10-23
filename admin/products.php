@@ -18,12 +18,14 @@ if(isset($_POST['add_product'])){
    $price = filter_var($price, FILTER_SANITIZE_STRING);
    $category = $_POST['category'];
    $category = filter_var($category, FILTER_SANITIZE_STRING);
+   $deskripsi = $_POST['deskripsi'];
+   $deskripsi = filter_var($deskripsi, FILTER_SANITIZE_STRING);
 
    $image = $_FILES['image']['name'];
    $image = filter_var($image, FILTER_SANITIZE_STRING);
    $image_size = $_FILES['image']['size'];
    $image_tmp_name = $_FILES['image']['tmp_name'];
-   $image_folder = '../uploaded_img/'.$image;
+   $image_folder = '../resto-images/'.$image;
 
    $select_products = $conn->prepare("SELECT * FROM `products` WHERE name = ?");
    $select_products->execute([$name]);
@@ -36,8 +38,8 @@ if(isset($_POST['add_product'])){
       }else{
          move_uploaded_file($image_tmp_name, $image_folder);
 
-         $insert_product = $conn->prepare("INSERT INTO `products`(name, category, price, image) VALUES(?,?,?,?)");
-         $insert_product->execute([$name, $category, $price, $image]);
+         $insert_product = $conn->prepare("INSERT INTO `products`(name, category, deskripsi, price, image) VALUES(?,?,?,?,?)");
+         $insert_product->execute([$name, $category, $deskripsi, $price, $image]);
 
          $message[] = 'new product added!';
       }
@@ -52,7 +54,7 @@ if(isset($_GET['delete'])){
    $delete_product_image = $conn->prepare("SELECT * FROM `products` WHERE id = ?");
    $delete_product_image->execute([$delete_id]);
    $fetch_delete_image = $delete_product_image->fetch(PDO::FETCH_ASSOC);
-   unlink('../uploaded_img/'.$fetch_delete_image['image']);
+   unlink('../resto-images/'.$fetch_delete_image['image']);
    $delete_product = $conn->prepare("DELETE FROM `products` WHERE id = ?");
    $delete_product->execute([$delete_id]);
    $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE pid = ?");
@@ -103,7 +105,7 @@ if(isset($_GET['delete'])){
 
     </section>
     <section class="p-8" style="padding-top: 0;">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
             <?php
             $show_products = $conn->prepare("SELECT * FROM `products`");
             $show_products->execute();
@@ -111,12 +113,13 @@ if(isset($_GET['delete'])){
                 while ($fetch_products = $show_products->fetch(PDO::FETCH_ASSOC)) {
             ?>
             <div class="bg-white border border-gray-200 shadow rounded p-4">
-                <img src="../uploaded_img/<?= $fetch_products['image']; ?>" alt="" class="w-full mb-2">
+                <img src="../resto-images/<?= $fetch_products['image']; ?>" alt="" class="w-full mb-2">
                 <div class="flex justify-between">
-                    <div class="text-2xl text-blue-600"><?= $fetch_products['price']; ?> /-</div>
+                    <div class="text-2xl text-blue-600">Rp. <?= $fetch_products['price']; ?>,000</div>
                     <div><?= $fetch_products['category']; ?></div>
                 </div>
                 <div class="text-xl text-blue-600"><?= $fetch_products['name']; ?></div>
+                <div class="text-sm text-black"><?= $fetch_products['deskripsi']; ?></div>
                 <div class="flex mt-2">
                     <a href="update_product.php?update=<?= $fetch_products['id']; ?>"
                         class="bg-blue-600 text-blue-100 hover:bg-blue-100 hover:text-blue-600 p-2 rounded mr-2">Update</a>

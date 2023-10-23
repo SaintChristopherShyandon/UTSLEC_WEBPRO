@@ -46,7 +46,39 @@ if(isset($_GET['delete'])){
     <?php include '../components/admin_header.php' ?>
 
     <section class="placed-orders pr-6 pl-6">
-        <h1 class="text-3xl text-blue-600 font-bold mb-8">Placed Orders</h1>
+        <h1 class="text-3xl text-blue-600 font-bold mb-8 mt-6">Orders</h1>
+
+        <div class="flex">
+            <div class="bg-white border border-black rounded-lg p-4 text-center w-1/2 mr-4">
+                <?php
+                $total_pendings = 0;
+                $select_pendings = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
+                $select_pendings->execute(['pending']);
+                while ($fetch_pendings = $select_pendings->fetch(PDO::FETCH_ASSOC)) {
+                    $total_pendings += $fetch_pendings['total_price'];
+                }
+                ?>
+                <h3 class="text-2xl mb-2">
+                    <span>Rp.</span><?= $total_pendings; ?>,000
+                </h3>
+                <p class="mb-2">Total Pendings</p>
+            </div>
+
+            <div class="bg-white border border-black rounded-lg p-4 text-center w-1/2 ml-4">
+                <?php
+                $total_completes = 0;
+                $select_completes = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
+                $select_completes->execute(['completed']);
+                while ($fetch_completes = $select_completes->fetch(PDO::FETCH_ASSOC)) {
+                    $total_completes += $fetch_completes['total_price'];
+                }
+                ?>
+                <h3 class="text-2xl mb-2">
+                    <span>Rp. </span><?= $total_completes; ?>,000
+                </h3>
+                <p class="mb-2">Total Completes</p>
+            </div>
+        </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 
@@ -64,7 +96,7 @@ if(isset($_GET['delete'])){
                 <p class="mb-2">Number: <span><?= $fetch_orders['number']; ?></span></p>
                 <p class="mb-2">Address: <span><?= $fetch_orders['address']; ?></span></p>
                 <p class="mb-2">Total Products: <span><?= $fetch_orders['total_products']; ?></span></p>
-                <p class="mb-2">Total Price: <span>$<?= $fetch_orders['total_price']; ?>/-</span></p>
+                <p class="mb-2">Total Price: <span>Rp. <?= $fetch_orders['total_price']; ?>,000</span></p>
                 <p class="mb-2">Payment Method: <span><?= $fetch_orders['method']; ?></span></p>
 
                 <form action="" method="POST">
@@ -87,7 +119,7 @@ if(isset($_GET['delete'])){
             <?php
                 }
             } else {
-                echo '<p class="empty">No orders placed yet!</p>';
+                echo '<p class="empty text-red-600 mt-10">BELUM ADA ORDERAN!</p>';
             }
             ?>
 
