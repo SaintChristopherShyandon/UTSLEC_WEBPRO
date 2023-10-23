@@ -33,8 +33,8 @@ include 'components/add_cart.php';
     <section class="bg-blue-100 py-12">
         <h1 class="text-3xl font-bold text-center -mt-6 mb-8">Kategori Makanan</h1>
 
-        <div class="container mx-auto flex justify-between gap-4">
-            <a href="category.php" class="block">
+        <div class="container md:mx-auto flex justify-between md:gap-4 flex-col md:flex-row ml-2 space-y-2">
+            <a href="category.php?category=Fast Food" class="block">
                 <div
                     class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 transition-all duration-300">
                     <img src="images/cat-1.png" alt="" class="w-20 mx-auto block">
@@ -48,7 +48,7 @@ include 'components/add_cart.php';
                 </div>
             </a>
 
-            <a href="category.php">
+            <a href="category.php?category=Hidangan Utama">
                 <div
                     class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 transition-all duration-300">
                     <img src="images/cat-2.png" alt="" class="w-20 mx-auto block">
@@ -62,7 +62,7 @@ include 'components/add_cart.php';
                 </div>
             </a>
 
-            <a href="category.php">
+            <a href="category.php?category=Minuman">
                 <div
                     class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 transition-all duration-300">
                     <img src="images/cat-3.png" alt="" class="w-20 mx-auto block">
@@ -76,7 +76,7 @@ include 'components/add_cart.php';
                 </div>
             </a>
 
-            <a href="category.php">
+            <a href="category.php?category=Dessert">
                 <div
                     class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200 transition-all duration-300">
                     <img src="images/cat-4.png" alt="" class="w-20 mx-auto block">
@@ -110,6 +110,8 @@ include 'components/add_cart.php';
                 <img src="resto-images/<?= $fetch_products['image']; ?>" alt="">
                 <a href="category.php?category=<?= $fetch_products['category']; ?>" class="text-gray-600">
                     <?= $fetch_products['category']; ?>
+                </a>
+
                 </a>
                 <div class="text-lg font-semibold text-gray-800 mt-2"><?= $fetch_products['name']; ?></div>
                 <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>"

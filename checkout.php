@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
             $message[] = 'Please add your address!';
         } else {
             $insert_order = $conn->prepare("INSERT INTO `orders` (user_id, name, number, email, method, address, total_products, total_price) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $insert_order->execute([$user_id, $name, $number, email, $method, $address, $total_products, $total_price]);
+            $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
 
             $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
             $delete_cart->execute([$user_id]);
@@ -92,8 +92,8 @@ if (isset($_POST['submit'])) {
                 <h1 class="text-2xl font-bold text-center mb-4">Info Pesanan</h1>
 
                 <div class="cart-items mb-4">
-                  <h3 class="text-xl font-semibold">Cart Items</h3>
-                  <?php
+                    <h3 class="text-xl font-semibold">Cart Items</h3>
+                    <?php
                   $grand_total = 0;
                   $cart_items = [];
                   $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
@@ -104,26 +104,28 @@ if (isset($_POST['submit'])) {
                            $total_products = implode($cart_items);
                            $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);
                            ?>
-                           <p class="text-left">
-                              <span class="name"><?= $fetch_cart['name']; ?></span>
-                              <span class="price">RP<?= number_format($fetch_cart['price'] * $fetch_cart['quantity'], 0, ',', '.'); ?>,000</span>
-                           </p>
-                           <?php
+                    <p class="text-left">
+                        <span class="name"><?= $fetch_cart['name']; ?></span>
+                        <span
+                            class="price">RP<?= number_format($fetch_cart['price'] * $fetch_cart['quantity'], 0, ',', '.'); ?>,000</span>
+                    </p>
+                    <?php
                      }
                   } else {
                      echo '<p class="empty text-center">Your cart is empty!</p>';
                   }
                   ?>
-               </div>
+                </div>
 
-               <p class="grand-total text-left">
-                  <span class="name">Grand Total:</span>
-                  <span class="price">RP<?= number_format($grand_total, 0, ',', '.'); ?>,000</span>
-               </p>
+                <p class="grand-total text-left">
+                    <span class="name">Grand Total:</span>
+                    <span class="price">RP<?= number_format($grand_total, 0, ',', '.'); ?>,000</span>
+                </p>
 
-                
+
                 <a href="cart.php"
-                   class="btn bg-transparent hover:bg-transparent text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 text-white py-2 px-4 rounded-full">View Cart</a>
+                    class="btn bg-transparent hover:bg-transparent text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 text-white py-2 px-4 rounded-full">View
+                    Cart</a>
 
                 <div class="user-info mt-4 grid justify-items-center">
                     <h3 class="text-xl font-semibold">Info</h3>
@@ -132,7 +134,8 @@ if (isset($_POST['submit'])) {
                     <p><i class="fas fa-envelope"></i><span><?= $fetch_profile['email'] ?></span></p>
 
                     <a href="update_profile.php"
-                       class="btn bg-transparent hover:bg-transparent text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 text-white py-2 px-4 rounded-full mt-4">Update Info</a>
+                        class="btn bg-transparent hover:bg-transparent text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 text-white py-2 px-4 rounded-full mt-4">Update
+                        Info</a>
 
                     <h3 class="text-xl font-semibold mt-4">Delivery Address</h3>
                     <p><i class="fas fa-map-marker-alt"></i><span><?php
@@ -143,7 +146,8 @@ if (isset($_POST['submit'])) {
                             } ?></span></p>
 
                     <a href="update_address.php"
-                       class="btn bg-transparent hover:bg-transparent text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 text-white py-2 px-4 rounded-full mt-4">Update Address</a>
+                        class="btn bg-transparent hover:bg-transparent text-blue-500 hover:text-blue-600 border-2 border-blue-500 hover:border-blue-600 text-white py-2 px-4 rounded-full mt-4">Update
+                        Address</a>
 
                     <label class="block mt-4">Select Payment Method
                         <select name="method" class="input mt-1" required>
@@ -154,9 +158,8 @@ if (isset($_POST['submit'])) {
                             <option value="paypal">PayPal</option>
                         </select>
                     </label>
-                    
-                    <input type="submit" value="Place Order" name="submit"
-                           class="btn <?php if ($fetch_profile['address'] == '') {
+
+                    <input type="submit" value="Place Order" name="submit" class="btn <?php if ($fetch_profile['address'] == '') {
                                echo 'cursor-not-allowed';
                            } ?> block w-full mt-4" style="background: var(--red); color: var(--white);">
 
