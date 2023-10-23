@@ -113,7 +113,7 @@ include 'components/add_cart.php';
                 </a>
                 <div class="text-lg font-semibold text-gray-800 mt-2"><?= $fetch_products['name']; ?></div>
                 <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>"
-                    class="hover-button absolute inset-12 opacity-0 flex items-center justify-center text-white bg-blue-300 rounded-full transition-opacity duration-300 hover:opacity-100">
+                    class="hover-button absolute inset-12 opacity-0 flex items-center justify-center text-white bg-blue-300 rounded-full transition-opacity duration-300 hover:opacity-100 h-10">
                     View Details
                 </a>
             </form>
