@@ -68,39 +68,48 @@ include 'components/add_cart.php';
 
 <section class="bg-blue-100 py-12">
    <h1 class="text-3xl font-bold text-center -mt-6 mb-8">Kategori Makanan</h1>
-   <div class="container mx-auto flex justify-between gap-8">
+   
+   <div class="container mx-auto flex justify-between gap-4">
 
-      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-         <img src="images/cat-1.png" alt="" class="w-20 mx-auto block">
-         <a href="#">
-            <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Makanan Cepat Saji</h5>
-         </a>
-         <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Makanan yang disajikan dan disiapkan dengan cepat dalam waktu yang singkat</p>
-      </div>
+      <a href="category.php class="block"">
+         <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200">
+            <img src="images/cat-1.png" alt="" class="w-20 mx-auto block">
+            <a href="#">
+               <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Makanan Cepat Saji</h5>
+            </a>
+            <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Makanan yang disajikan dan disiapkan dengan cepat dalam waktu yang singkat</p>
+         </div>
+      </a>
 
-      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-         <img src="images/cat-2.png" alt="" class="w-20 mx-auto block">
-         <a href="#">
-            <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Hidangan Utama</h5>
-         </a>
-         <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Hidangan yang biasanya menjadi fokus utama dalam suatu waktu makan</p>
-      </div>
+      <a href="category.php">
+         <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200">
+            <img src="images/cat-2.png" alt="" class="w-20 mx-auto block">
+            <a href="#">
+               <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Hidangan Utama</h5>
+            </a>
+            <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Hidangan yang biasanya menjadi fokus utama dalam suatu waktu makan</p>
+         </div>
+      </a>
 
-      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-         <img src="images/cat-3.png" alt="" class="w-20 mx-auto block">
-         <a href="#">
-            <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Minuman</h5>
-         </a>
-         <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Segala jenis cairan yang dikonsumsi untuk menghilangkan dahaga, memberikan nutrisi, atau sekedar kenikmatan rasa</p>
-      </div>
+      <a href="category.php">    
+         <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200">
+            <img src="images/cat-3.png" alt="" class="w-20 mx-auto block">
+            <a href="#">
+               <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Minuman</h5>
+            </a>
+            <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Segala jenis cairan yang dikonsumsi untuk menghilangkan dahaga, memberikan nutrisi, atau sekedar kenikmatan rasa</p>
+         </div>
+      </a>
 
-      <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-         <img src="images/cat-4.png" alt="" class="w-20 mx-auto block">
-         <a href="#">
-            <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Makanan Penutup</h5>
-         </a>
-         <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Hidangan yang disajikan setelah hidangan utama untuk menyegarkan mulut dan memberikan kenikmatan manis setelah makan</p>
-      </div>
+      <a href="category.php">       
+         <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 hover:bg-blue-200">
+            <img src="images/cat-4.png" alt="" class="w-20 mx-auto block">
+            <a href="#">
+               <h5 class="mb-2 text-center text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Makanan Penutup</h5>
+            </a>
+            <p class="mb-3 text-center font-normal text-gray-500 dark:text-gray-400">Hidangan yang disajikan setelah hidangan utama untuk menyegarkan mulut dan memberikan kenikmatan manis setelah makan</p>
+         </div>
+      </a>
    </div>
 </section>
 
