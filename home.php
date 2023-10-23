@@ -24,7 +24,7 @@ include 'components/add_cart.php';
     <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-50 font-sans">
 
     <?php include 'components/user_header.php'; ?>
 

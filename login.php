@@ -52,6 +52,7 @@ if (isset($_POST['submit'])) {
 
     <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
 </head>
+<<<<<<< Updated upstream
 
 <body>
 
@@ -60,6 +61,23 @@ if (isset($_POST['submit'])) {
     <!-- header section ends -->
 
     <section class="form-container mx-auto max-w-md p-6 bg-white rounded-lg shadow-lg">
+=======
+<body class="bg-gray-50">
+   
+<!-- header section starts  -->
+<?php include 'components/user_header.php'; ?>
+<!-- header section ends -->
+
+<section class="form-container mx-auto max-w-md p-6 bg-white rounded-lg shadow-lg mt-8 mb-8">
+
+   <form action="" method="post">
+      <h3 class="text-2xl font-bold mb-4">Login Now</h3>
+      <input type="email" name="email" required placeholder="Email" class="w-full p-2 border border-gray-300 rounded mb-2" maxlength="50">
+      <input type="password" name="pass" required placeholder="Password" class="w-full p-2 border border-gray-300 rounded mb-2" maxlength="50">
+      <input type="submit" value="Login Now" name="submit" class="w-full bg-blue-500 text-white py-2 rounded cursor-pointer">
+      <p class="mt-2 text-sm">Don't have an account? <a href="register.php" class="text-blue-500">Register Now</a></p>
+   </form>
+>>>>>>> Stashed changes
 
         <form action="" method="post">
             <h3 class="text-2xl font-bold mb-4">Login Now</h3>

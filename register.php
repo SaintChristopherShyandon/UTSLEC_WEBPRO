@@ -68,9 +68,24 @@ if(isset($_POST['submit'])){
 
 <body class="bg-gray-100">
 
+<<<<<<< Updated upstream
     <!-- header section starts  -->
     <?php include 'components/user_header.php'; ?>
     <!-- header section ends -->
+=======
+<section class="flex justify-center items-center min-h-screen">
+   <form action="" method="post" class="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
+      <h3 class="text-2xl font-bold mb-4">Register Now</h3>
+      <input type="text" name="name" required placeholder="Name" class="w-full p-2 mb-2 border border-gray-300 rounded">
+      <input type="email" name="email" required placeholder="Email" class="w-full p-2 mb-2 border border-gray-300 rounded" maxlength="50">
+      <input type="number" name="number" required placeholder="Phone number" class="w-full p-2 mb-2 border border-gray-300 rounded" min="0" max="9999999999" maxlength="10">
+      <input type="password" name="pass" required placeholder="Password" class="w-full p-2 mb-2 border border-gray-300 rounded" maxlength="50">
+      <input type="password" name="cpass" required placeholder="Confirm your password" class="w-full p-2 mb-2 border border-gray-300 rounded" maxlength="50">
+      <input type="submit" value="Register Now" name="submit" class="w-full bg-blue-500 text-white py-2 rounded cursor-pointer">
+      <p class="mt-2 text-sm">Already have an account? <a href="login.php" class="text-blue-500">Login Now</a></p>
+   </form>
+</section>
+>>>>>>> Stashed changes
 
     <section class="flex justify-center items-center min-h-screen">
         <form action="" method="post" class="bg-white p-6 rounded-lg shadow-md max-w-sm w-full">
