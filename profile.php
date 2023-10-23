@@ -1,32 +1,42 @@
 <?php
-
 include 'components/connect.php';
 
 session_start();
 
-if(isset($_SESSION['user_id'])){
-   $user_id = $_SESSION['user_id'];
-}else{
-   $user_id = '';
-   header('location:home.php');
-};
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
 
+    // Periksa apakah sesi 'user_profile' telah diinisialisasi
+    if (isset($_SESSION['user_profile'])) {
+        // Jika ya, maka ambil profil pengguna dari sesi
+        $fetch_profile = $_SESSION['user_profile'];
+    } else {
+        // Jika tidak, atur $fetch_profile ke nilai default
+        $fetch_profile = array(
+            'name' => 'Nama Pengguna Default',      // Ganti dengan nilai default yang sesuai
+            'number' => 'Nomor Default',    // Ganti dengan nilai default yang sesuai
+            'email' => 'Email Default',     // Ganti dengan nilai default yang sesuai
+            'address' => 'Alamat Default'    // Ganti dengan nilai default yang sesuai
+        );
+    }
+} else {
+    $user_id = '';
+    header('location:home.php');
+}
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE-edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>profile</title>
+   <title>Profile</title>
 
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
    <!-- Tailwind CSS link -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css">
-
 </head>
 <body>
    
@@ -35,12 +45,8 @@ if(isset($_SESSION['user_id'])){
 <!-- header section ends -->
 
 <section class="user-details p-4 bg-white mt-4 mx-auto max-w-md rounded-lg shadow-lg">
-
    <div class="user text-center">
-      <?php
-         
-      ?>
-      <img src="images/user-icon.png" alt="" class="mx-auto mb-4">
+      <img src="images/user-icon.png" alt="" class="mx-auto mb-4 w-32">
       <p><i class="fas fa-user"></i><span><?= $fetch_profile['name']; ?></span></p>
       <p><i class="fas fa-phone"></i><span><?= $fetch_profile['number']; ?></span></p>
       <p><i class="fas fa-envelope"></i><span><?= $fetch_profile['email']; ?></span></p>
@@ -48,13 +54,11 @@ if(isset($_SESSION['user_id'])){
       <p class="address"><i class="fas fa-map-marker-alt"></i><span><?php if($fetch_profile['address'] == ''){echo 'Please enter your address';}else{echo $fetch_profile['address'];} ?></span></p>
       <a href="update_address.php" class="btn bg-blue-500 text-white px-4 py-2 rounded mt-2 inline-block">Update Address</a>
    </div>
-
 </section>
 
 <?php include 'components/footer.php'; ?>
 
 <!-- custom js file link  -->
 <script src="js/script.js"></script>
-
 </body>
 </html>

@@ -39,7 +39,6 @@ include 'components/add_cart.php';
    </p>
 </div>
 
-
 <!-- Menu section starts -->
 <section class="text-center py-12">
    <h1 class="text-3xl font-bold text-gray-800 mb-8">Hidangan Terbaru</h1>
@@ -47,16 +46,17 @@ include 'components/add_cart.php';
    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
 
       <?php
-         $select_products = $conn->prepare("SELECT * FROM `products` LIMIT 6");
+         $select_products = $conn->prepare("SELECT * FROM `products`");
          $select_products->execute();
          if($select_products->rowCount() > 0){
             while($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)){
                $product_description = $fetch_products['deskripsi'];
+               $formatted_price = number_format($fetch_products['price'], 0, ',', '.') . ',000';
       ?>
       <form action="" method="post" class="bg-white p-4 shadow-md rounded-md">
          <input type="hidden" name="pid" value="<?= $fetch_products['id']; ?>">
          <input type="hidden" name="name" value="<?= $fetch_products['name']; ?>">
-         <input type="hidden" name="price" value="<?= $fetch_products['price']; ?>">
+         <input type="hidden" name="price" value="Rp. <?= $formatted_price; ?>">
          <input type="hidden" name="image" value="<?= $fetch_products['image']; ?>">
          <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>" class="text-blue-600 text-xl">
             <i class="fas fa-eye"></i>
@@ -72,7 +72,7 @@ include 'components/add_cart.php';
          <p class="text-gray-600 mt-2"><?= $product_description ?></p>
          <div class="flex items-center mt-2">
             <div class="text-xl font-semibold text-gray-800">
-               <span class="text-gray-500">Rp.</span><?= $fetch_products['price']; ?>
+               Rp. <?= $formatted_price; ?>
             </div>
             <input type="number" name="qty" class="ml-4 border text-gray-800" min="1" max="99" value="1" maxlength="2">
          </div>
@@ -95,4 +95,3 @@ include 'components/add_cart.php';
 <script src="js/script.js"></script>
 </body>
 </html>
-
