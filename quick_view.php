@@ -16,17 +16,21 @@ include 'components/add_cart.php';
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick View</title>
 
-    <!-- Font Awesome CDN link -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body class="bg-gray-100">
     <?php include 'components/user_header.php'; ?>
+
+    <?php include 'components/back_to_menu.php'; ?>
 
     <section class="quick-view p-4 md:p-12">
         <h1 class="text-3xl font-bold text-center mb-8">Detail</h1>
@@ -56,8 +60,8 @@ include 'components/add_cart.php';
                         <div class="price text-2xl font-semibold">
                             <span>Rp. </span><?= $fetch_products['price']; ?>,000
                         </div>
-                        <input type="number" name="qty" class="qty w-16 p-2 border border-gray-300 rounded-md"
-                            min="1" max="99" value="1" maxlength="2">
+                        <input type="number" name="qty" class="qty w-16 p-2 border border-gray-300 rounded-md" min="1"
+                            max="99" value="1" maxlength="2">
                     </div>
                     <button type="submit" name="add_to_cart"
                         class="cart-btn mt-4 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">Add
@@ -72,7 +76,6 @@ include 'components/add_cart.php';
         }
         ?>
     </section>
-
-    <?php include 'components/footer.php'; ?>
 </body>
+
 </html>

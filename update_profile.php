@@ -82,44 +82,54 @@ if(isset($_POST['submit'])){
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Update Profile</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
 
-   <!-- Link to Tailwind CSS (You need to add this link to your project) -->
-   <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Link to Tailwind CSS (You need to add this link to your project) -->
+    <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
 
-   <!-- Font Awesome CSS (You need to add this link to your project) -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Font Awesome CSS (You need to add this link to your project) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
 </head>
+
 <body>
-   
-<!-- header section starts  -->
-<?php include 'components/user_header.php'; ?>
-<!-- header section ends -->
 
-<section class="form-container update-form">
-   <form action="" method="post" class="mx-auto max-w-md mt-4 p-4 bg-white rounded shadow">
-      <h3 class="text-2xl font-bold mb-4">Update Profile</h3>
-      <input type="text" name="name" placeholder="<?= $fetch_profile['name']; ?>" class="w-full p-2 mb-2 rounded border" maxlength="50">
-      <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>" class="w-full p-2 mb-2 rounded border" maxlength="50">
-      <input type="number" name="number" placeholder="<?= $fetch_profile['number']; ?>" class="w-full p-2 mb-2 rounded border" min="0" max="9999999999" maxlength="10">
-      <input type="password" name="old_pass" placeholder="Enter your old password" class="w-full p-2 mb-2 rounded border" maxlength="50">
-      <input type="password" name="new_pass" placeholder="Enter your new password" class="w-full p-2 mb-2 rounded border" maxlength="50">
-      <input type="password" name="confirm_pass" placeholder="Confirm your new password" class="w-full p-2 mb-4 rounded border" maxlength="50">
-      <input type="submit" value="Update Now" name="submit" class="w-full p-2 rounded bg-blue-600 text-white hover:bg-blue-700 cursor-pointer">
-   </form>
-</section>
+    <!-- header section   -->
+    <?php include 'components/user_header.php'; ?>
+    <!-- header section ends -->
 
-<!-- footer section starts  -->
-<?php include 'components/footer.php'; ?>
-<!-- footer section ends -->
+    <section class="form-container update-form">
+        <form action="" method="post" class="mx-auto max-w-md mt-4 p-4 bg-white rounded shadow">
+            <h3 class="text-2xl font-bold mb-4">Update Profile</h3>
+            <input type="text" name="name" placeholder="<?= $fetch_profile['name']; ?>"
+                class="w-full p-2 mb-2 rounded border" maxlength="50">
+            <input type="email" name="email" placeholder="<?= $fetch_profile['email']; ?>"
+                class="w-full p-2 mb-2 rounded border" maxlength="50">
+            <input type="number" name="number" placeholder="<?= $fetch_profile['number']; ?>"
+                class="w-full p-2 mb-2 rounded border" min="0" max="9999999999" maxlength="10">
+            <input type="password" name="old_pass" placeholder="Enter your old password"
+                class="w-full p-2 mb-2 rounded border" maxlength="50">
+            <input type="password" name="new_pass" placeholder="Enter your new password"
+                class="w-full p-2 mb-2 rounded border" maxlength="50">
+            <input type="password" name="confirm_pass" placeholder="Confirm your new password"
+                class="w-full p-2 mb-4 rounded border" maxlength="50">
+            <input type="submit" value="Update Now" name="submit"
+                class="w-full p-2 rounded bg-blue-600 text-white hover:bg-blue-700 cursor-pointer">
+        </form>
+    </section>
 
-<!-- custom js file link  -->
-<script src="js/script.js"></script>
+    <!-- footer section   -->
+    <?php include 'components/footer.php'; ?>
+    <!-- footer section ends -->
+
+    <!-- custom js file link  -->
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>

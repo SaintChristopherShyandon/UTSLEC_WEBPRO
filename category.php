@@ -24,20 +24,17 @@ $select_products->execute();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kategori</title>
-
-    <!-- Tailwind CSS CDN link -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
     <?php include 'components/user_header.php'; ?>
-    <!-- Display the category name or any message you want -->
+    <?php include 'components/back_to_home.php'; ?>
     <?php if ($category) : ?>
-    <h1 class="text-2xl font-bold mt-20 mb-6 flex justify-center">Kategori: <?= $category ?></h1>
+    <h1 class="text-2xl font-bold mt-10 mb-6 flex justify-center">Kategori: <?= $category ?></h1>
     <?php endif; ?>
 
-    <!-- Display the products based on the category or all products if no category selected -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-6 mb-10">
         <?php
         if ($select_products->rowCount() > 0) {
             while ($fetch_products = $select_products->fetch(PDO::FETCH_ASSOC)) {

@@ -40,53 +40,62 @@ if(isset($_POST['send'])){
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Contact</title>
 
-   <!-- Font Awesome CDN link -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-   <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
+
 <body class="bg-gray-100 font-sans">
 
-<!-- Header section starts -->
-<?php include 'components/user_header.php'; ?>
-<!-- Header section ends -->
+    <!-- Header section  -->
+    <?php include 'components/user_header.php'; ?>
+    <!-- Header section ends -->
 
-<div class="bg-gray-200 p-4">
-   <h3 class="text-2xl text-center">Kontak Kami</h3>
-   <p class="mt-2 text-center">
-      <a href="home.php">Home</a>
-      <span class="mx-2">/</span>
-      <span>Contact</span>
-   </p>
-</div>
+    <div class="bg-gray-200 p-4">
+        <h3 class="text-2xl text-center">Kontak Kami</h3>
+        <p class="mt-2 text-center">
+            <a href="home.php">Home</a>
+            <span class="mx-2">/</span>
+            <span>Contact</span>
+        </p>
+    </div>
 
-<section class="contact py-12">
-   <div class="container mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 items-center">
-         <div class="md:order-2">
-            <img src="images/contact-img.svg" alt="Contact Image">
-         </div>
-         <form action="" method="post" class="p-4">
-            <h3 class="text-2xl mb-4 font-bold">Katakan Sesuatu!</h3>
-            <input type="text" name="name" maxlength="50" class="w-full p-2 border border-gray-300 rounded mb-3" placeholder="Masukkan Nama" required>
-            <input type="number" name="number" min="0" max="9999999999" class="w-full p-2 border border-gray-300 rounded mb-3" placeholder="Masukkan Nomor Telepon" required maxlength="10">
-            <input type="email" name="email" maxlength="50" class="w-full p-2 border border-gray-300 rounded mb-3" placeholder="Masukkan Email" required>
-            <textarea name="msg" class="w-full p-2 border border-gray-300 rounded mb-3" required placeholder="Masukkan Pesan" maxlength="500" cols="30" rows="5"></textarea>
-            <input type="submit" value="Kirim Pesan" name="send" class="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-600">
-         </form>
-      </div>
-   </div>
-</section>
+    <section class="contact py-12">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 items-center">
+                <div class="md:order-2">
+                    <img src="images/contact-img.svg" alt="Contact Image">
+                </div>
+                <form action="" method="post" class="p-4">
+                    <h3 class="text-2xl mb-4 font-bold">Katakan Sesuatu!</h3>
+                    <input type="text" name="name" maxlength="50" class="w-full p-2 border border-gray-300 rounded mb-3"
+                        placeholder="Masukkan Nama" required>
+                    <input type="number" name="number" min="0" max="9999999999"
+                        class="w-full p-2 border border-gray-300 rounded mb-3" placeholder="Masukkan Nomor Telepon"
+                        required maxlength="10">
+                    <input type="email" name="email" maxlength="50"
+                        class="w-full p-2 border border-gray-300 rounded mb-3" placeholder="Masukkan Email" required>
+                    <textarea name="msg" class="w-full p-2 border border-gray-300 rounded mb-3" required
+                        placeholder="Masukkan Pesan" maxlength="500" cols="30" rows="5"></textarea>
+                    <input type="submit" value="Kirim Pesan" name="send"
+                        class="bg-blue-500 text-white py-2 px-4 rounded cursor-pointer hover:bg-blue-600">
+                </form>
+            </div>
+        </div>
+    </section>
 
-<!-- Footer section starts -->
-<?php include 'components/footer.php'; ?>
-<!-- Footer section ends -->
+    <!-- Footer section  -->
+    <?php include 'components/footer.php'; ?>
+    <!-- Footer section ends -->
 
 </body>
+
 </html>

@@ -38,89 +38,79 @@ $grand_total = 0;
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cart</title>
-
-    <!-- Font Awesome CDN link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
     <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body>
+    <?php include 'components/user_header.php'; ?>
+    <?php include 'components/back_to_menu.php'; ?>
+    <section class="bg-gray-100 py-12">
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold text-center">Keranjang</h1>
 
-<!-- Header section starts -->
-<?php include 'components/user_header.php'; ?>
-<!-- Header section ends -->
-
-<div class="bg-gray-200 p-4">
-   <h3 class="text-2xl text-center">Keranjang Belanja</h3>
-   <p class="mt-2 text-center">
-      <a href="home.php">Home</a>
-      <span class="mx-2">/</span>
-      <span>Keranjang</span>
-   </p>
-</div>
-
-<!-- Shopping cart section starts -->
-<section class="bg-gray-100 py-12">
-    <div class="container mx-auto">
-        <h1 class="text-3xl font-bold text-center">Keranjang-mu</h1>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
-            <?php
-            $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
-            $select_cart->execute([$user_id]);
-            if ($select_cart->rowCount() > 0) {
-                while ($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)) {
-                    $sub_total = $fetch_cart['price'] * $fetch_cart['quantity'];
-                    $grand_total += $sub_total; // Hitung grand total di sini
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
+                <?php
+                    $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+                    $select_cart->execute([$user_id]);
+                    if ($select_cart->rowCount() > 0) {
+                        while ($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)) {
+                            $sub_total = $fetch_cart['price'] * $fetch_cart['quantity'];
+                            $grand_total += $sub_total;
                     ?>
-                    <form action="" method="post" class="bg-white p-4 shadow-md rounded-md">
+
+                <form action="" method="post" class="bg-white p-4 shadow-md rounded-md">
+                    <div class="flex justify-center mb-2 space-x-4">
                         <input type="hidden" name="cart_id" value="<?= $fetch_cart['id']; ?>">
                         <a href="quick_view.php?pid=<?= $fetch_cart['pid']; ?>" class="fas fa-eye text-blue-600"></a>
-                        <button type="submit" class="fas fa-times text-red-600" name="delete" onclick="return confirm('Delete this item?');"></button>
-                        <img src="resto-images/<?= $fetch_cart['image']; ?>" alt="" class="w-24 h-24 mx-auto">
-                        <div class="text-xl font-semibold mt-2"><?= $fetch_cart['name']; ?></div>
-                        <div class="flex items-center mt-2">
-                            <div class="text-blue-600 text-xl font-semibold">Rp.<?= number_format((float)$fetch_cart['price'], 0, ',', '.') . ",000"; ?></div>
-                            <input type="number" name="qty" class="ml-2 border border-gray-300 p-2 rounded-md w-12" min="1.000" max="99.000.000" value="<?= $fetch_cart['quantity']; ?>" maxlength="5">
-                            <button type="submit" class="fas fa-edit text-blue-600 ml-2" name="update_qty"></button>
-                        </div>
-                        <div class="text-xl font-semibold mt-2">Subtotal: Rp.<?= number_format((float)$sub_total, 0, ',', '.') . ",000"; ?></div>
+                        <button type="submit" class="fas fa-times text-red-600" name="delete"
+                            onclick="return confirm('Delete this item?');"></button>
+                    </div>
 
-                    </form>
-                    <?php
+                    <img src="resto-images/<?= $fetch_cart['image']; ?>" alt="" class="w-90 h-32 mx-auto">
+                    <div class="text-xl font-semibold mt-2"><?= $fetch_cart['name']; ?></div>
+                    <div class="flex items-center mt-2">
+                        <div class="text-blue-600 text-xl font-semibold">
+                            Rp.<?= number_format((float)$fetch_cart['price'], 0, ',', '.') . ",000"; ?></div>
+                        <input type="number" name="qty" class="ml-2 border border-gray-300 p-2 rounded-md w-12"
+                            min="1.000" max="99.000.000" value="<?= $fetch_cart['quantity']; ?>" maxlength="5">
+                        <button type="submit" class="fas fa-edit text-blue-600 ml-2" name="update_qty"></button>
+                    </div>
+                    <div class="text-xl font-semibold mt-2">Subtotal:
+                        Rp.<?= number_format((float)$sub_total, 0, ',', '.') . ",000"; ?></div>
+                </form>
+                <?php
                 }
             } else {
                 echo '<p class="text-2xl text-center mt-8">Your cart is empty</p>';
             }
             ?>
-        </div>
+            </div>
 
-        <div class="text-2xl font-semibold mt-8 mb-3">Cart Total: Rp.<?= $grand_total; ?>,000</div>
-        <a href="checkout.php" class="btn bg-black text-white p-2 px-5 font-semibold  rounded-full bg-blue-500 <?= ($grand_total > 1) ? '' : 'cursor-not-allowed' ?>">Proceed to Checkout</a>
+            <div class="text-2xl font-semibold mt-8 mb-3">Cart Total: Rp.<?= $grand_total; ?>,000</div>
+            <a href="checkout.php"
+                class="btn bg-black text-white p-2 px-5 font-semibold  rounded-full bg-blue-500 <?= ($grand_total > 1) ? '' : 'cursor-not-allowed' ?>">Proceed
+                to Checkout</a>
 
-        <div class="mt-8 text-center">
-            <form action="" method="post">
-                <button type="submit" class="delete-btn bg-black text-white p-2 px-5 font-semibold  rounded-full bg-blue-500 mb-3 <?= ($grand_total > 1) ? '' : 'cursor-not-allowed' ?>"
+            <div class="mt-8 text-center">
+                <form action="" method="post">
+                    <button type="submit"
+                        class="delete-btn bg-black text-white p-2 px-5 font-semibold  rounded-full bg-blue-500 mb-3 <?= ($grand_total > 1) ? '' : 'cursor-not-allowed' ?>"
                         name="delete_all" onclick="return confirm('Delete all items from cart?');">Delete All
-                </button>
-            </form>
-            <a href="menu.php" class="bg-black text-white p-2 px-5 font-semibold  rounded-full bg-blue-500">Continue Shopping</a>
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
-<!-- Shopping cart section ends -->
-
-<!-- Footer section starts -->
-<?php include 'components/footer.php'; ?>
-<!-- Footer section ends -->
-
-<!-- Custom JS file link -->
-<script src="js/script.js"></script>
+    </section>
+    <?php include 'components/footer.php'; ?>
+    <script src="js/script.js"></script>
 
 </body>
+
 </html>

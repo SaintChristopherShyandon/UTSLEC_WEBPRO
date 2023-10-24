@@ -8,7 +8,6 @@
             <a href="placed_orders.php" class="hover:underline p-2">Orders</a>
             <a href="admin_accounts.php" class="hover:underline p-2">Admins</a>
             <a href="users_accounts.php" class="hover:underline p-2">Users</a>
-            <a href="messages.php" class="hover:underline p-2">Messages</a>
         </nav>
         <div class="profile hidden md:flex md:flex-row md:space-x-4 text-black ml-4">
             <a href="update_profile.php" class="btn bg-blue-100">Update Profile</a>

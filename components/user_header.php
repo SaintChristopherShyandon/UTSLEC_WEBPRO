@@ -20,7 +20,6 @@ if (isset($message)) {
                 <a href="about.php" class="text-white hover:underline p-2 text-sm md:text-base">About</a>
                 <a href="menu.php" class="text-white hover:underline p-2 text-sm md:text-base">Menu</a>
                 <a href="orders.php" class="text-white hover:underline p-2 text-sm md:text-base">Orders</a>
-                <a href="contact.php" class="text-white hover:underline text-sm md:text-base">Contact</a>
             </nav>
             <a href="search.php" class="text-white hover:text-gray-200 p-3"><i class="fas fa-search"></i></a>
             <a href="cart.php" class="text-white hover:text-gray-200 p-3"><i class="fa fa-shopping-basket"></i></a>
@@ -42,7 +41,7 @@ if (isset($message)) {
         <div id="userDropdown"
             class="relative right-1 left-4 hidden sm:flex md:flex sm:flex-col md:flex-row md:items-center sm:space-y-2 md:space-x-4 bg-blue-100 text-black rounded shadow-md p-2">
             <a href="profile.php" class="hover:underline md:pt-1.5"><i class="fas fa-user alt"></i></a>
-            <a href="components/user_logout.php button" onclick="return confirm('Logout from this website?');"
+            <a href="components/user_logout.php" onclick="return confirm('Logout from this website?');"
                 class="text-red hover:underline ">Logout</a>
             <a href="login.php" class="hover:underline">Login</a>
             <a href="register.php" class="hover:underline">Register</a>

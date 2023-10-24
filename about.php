@@ -18,20 +18,15 @@ if(isset($_SESSION['user_id'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
-
     <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-
-    <!-- Font Awesome CDN link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
 
 </head>
 
 <body class="bg-gray-100 font-sans">
-
-    <!-- Header section starts -->
     <?php include 'components/user_header.php'; ?>
-    <!-- Header section ends -->
+    <?php include 'components/back_to_home.php'; ?>
 
     <section class="bg-gray-100 py-12">
         <div class="container mx-auto">

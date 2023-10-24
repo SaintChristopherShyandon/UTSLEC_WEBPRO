@@ -20,21 +20,14 @@ include 'components/add_cart.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Page</title>
-
-    <!-- Font Awesome CDN link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
-    <!-- Tailwind CSS link -->
     <link href="https://unpkg.com/tailwindcss@^2.2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
-
-    <!-- Header section starts -->
     <?php include 'components/user_header.php'; ?>
-    <!-- Header section ends -->
+    <?php include 'components/back_to_home.php'; ?>
 
-    <!-- Search form section starts -->
     <section class="bg-gray-100 py-4">
         <div class="container mx-auto">
             <form method="post" action="" class="flex items-center">
@@ -46,7 +39,6 @@ include 'components/add_cart.php';
             </form>
         </div>
     </section>
-    <!-- Search form section ends -->
 
     <section class="bg-gray-100 py-4">
         <div class="container mx-auto">
@@ -86,11 +78,7 @@ include 'components/add_cart.php';
         </div>
     </section>
 
-    <!-- Footer section starts -->
     <?php include 'components/footer.php'; ?>
-    <!-- Footer section ends -->
-
-    <!-- Custom JS file link -->
     <script src="js/script.js"></script>
 
 </body>
