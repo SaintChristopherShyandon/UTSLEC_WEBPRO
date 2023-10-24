@@ -75,12 +75,7 @@ if(isset($_SESSION['user_id'])){
             </div>
         </div>
     </section>
-
-    <!-- Footer section  -->
     <?php include 'components/footer.php'; ?>
-    <!-- Footer section ends -->
-
-    <!-- Custom JS file link -->
     <script src="js/script.js"></script>
 
 </body>
