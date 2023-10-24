@@ -11,9 +11,11 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if (isset($_POST['submit'])) {
-
     $address = $_POST['building'] . ', ' . $_POST['area'] . ', ' . $_POST['town'] . ', ' . $_POST['city'] . ', ' . $_POST['state'] . ', ' . $_POST['pin_code'];
     $address = filter_var($address, FILTER_SANITIZE_STRING);
+
+    // Simpan alamat ke dalam sesi
+    $_SESSION['user_profile']['address'] = $address;
 
     $update_address = $conn->prepare("UPDATE `users` set address = ? WHERE id = ?");
     $update_address->execute([$address, $user_id]);

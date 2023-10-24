@@ -40,17 +40,6 @@ if (!isset($admin_id)) {
 
             <div class="bg-white border border-black rounded-lg p-4 text-center">
                 <?php
-                $select_orders = $conn->prepare("SELECT * FROM `orders`");
-                $select_orders->execute();
-                $numbers_of_orders = $select_orders->rowCount();
-                ?>
-                <h3 class="text-2xl mb-2"><?= $numbers_of_orders; ?></h3>
-                <p class="mb-2">Total Orders</p>
-                <a href="placed_orders.php" class="btn bg-blue-100 text-blue-600">See Orders</a>
-            </div>
-
-            <div class="bg-white border border-black rounded-lg p-4 text-center">
-                <?php
                 $select_products = $conn->prepare("SELECT * FROM `products`");
                 $select_products->execute();
                 $numbers_of_products = $select_products->rowCount();

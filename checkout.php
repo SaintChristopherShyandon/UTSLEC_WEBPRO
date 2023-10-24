@@ -5,7 +5,7 @@ session_start();
 
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
-    
+
     if (isset($_SESSION['user_profile'])) {
         $fetch_profile = $_SESSION['user_profile'];
     } else {
@@ -22,36 +22,12 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if (isset($_POST['submit'])) {
-    $name = isset($_POST['name']) ? filter_var($_POST['name'], FILTER_SANITIZE_STRING) : '';
-    $number = isset($_POST['number']) ? filter_var($_POST['number'], FILTER_SANITIZE_STRING) : '';
-    $email = isset($_POST['email']) ? filter_var($_POST['email'], FILTER_SANITIZE_STRING) : '';
-    $method = isset($_POST['method']) ? filter_var($_POST['method'], FILTER_SANITIZE_STRING) : '';
-    $address = isset($_POST['address']) ? filter_var($_POST['address'], FILTER_SANITIZE_STRING) : '';
-    $total_products = isset($_POST['total_products']) ? $_POST['total_products'] : '';
-    $total_price = isset($_POST['total_price']) ? $_POST['total_price'] : '';
+    $delete_cart = $conn->prepare("DELETE FROM cart WHERE user_id = ?");
+    $delete_cart->execute([$user_id]);
 
-    $check_cart = $conn->prepare("SELECT * FROM cart WHERE user_id = ?");
-    $check_cart->execute([$user_id]);
-
-    if ($address == '') {
-        $message[] = 'Please add your address!';
-    } else {
-        // Address is not empty, proceed with order placement.
-        $placed_on = date("Y-m-d H:i:s");
-        $payment_status = 'Pending';
-
-        $insert_order = $conn->prepare("INSERT INTO orders (user_id, name, number, email, method, address, total_products, total_price, placed_on, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price, $placed_on, $payment_status]);
-
-        $delete_cart = $conn->prepare("DELETE FROM cart WHERE user_id = ?");
-        $delete_cart->execute([$user_id]);
-
-        // Reset the order information
-        $total_products = '';
-        $total_price = 0;
-
-        $message[] = 'Order placed successfully!';
-    }
+    $message[] = 'Berhasil checkout! Silahkan tunggu pesanan anda!';
+    header('location: menu.php');
+    exit;
 }
 ?>
 
@@ -143,9 +119,7 @@ if (isset($_POST['submit'])) {
                                 <option value="pay-later">PayLater</option>
                             </select>
                         </label>
-                        <input type="submit" value="Checkout" name="submit" class="btn bg-transparent hover:bg-blue-100 text-blue-500 border-2 border-blue-500 py-2 text-center rounded-full mt-4 <?php if ($fetch_profile['address'] == '') {
-                             echo 'cursor-not-allowed';
-                        } ?>">
+                        <input type="submit" value="Checkout" name="submit" class="btn bg-transparent hover:bg-blue-100 text-blue-500 border-2 border-blue-500 py-2 text-center rounded-full mt-4">
                     </div>
                 </div>
             </form>
