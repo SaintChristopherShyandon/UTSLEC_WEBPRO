@@ -43,7 +43,7 @@ if(isset($_SESSION['user_id'])){
                     <p>NIM : 00000074964</p>
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-md text-center">
-                    <img src="images/" alt="About Us 3" class="w-24 mx-auto mb-4">
+                    <img src="images/shyandon.jpg" alt="About Us 3" class="w-16 mx-auto rounded-full mb-4">
                     <h3 class="text-xl font-semibold mb-2">Saint Christopher Shyandon</h3>
                     <p>NIM : 00000075026</p>
                 </div>
