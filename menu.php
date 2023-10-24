@@ -51,10 +51,9 @@ include 'components/add_cart.php';
                 <a href="quick_view.php?pid=<?= $fetch_products['id']; ?>" class="text-blue-600 text-xl">
                     <i class="fas fa-eye"></i>
                 </a>
-                <button type="submit" class="text-blue-600 text-xl" name="add_to_cart">
+                <!-- <button type="submit" class="text-blue-600 text-xl" name="add_to_cart">
                     <i class="fas fa-shopping-cart"></i>
-                </button>
-
+                </button> -->
                 <img src="resto-images/<?= $fetch_products['image']; ?>" alt="" class="mt-2">
                 <a href="category.php?category=<?= $fetch_products['category']; ?>" class="text-gray-600">
                     <?= $fetch_products['category']; ?>

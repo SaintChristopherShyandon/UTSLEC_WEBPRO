@@ -22,44 +22,39 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $name = filter_var($name, FILTER_SANITIZE_STRING);
-    $number = $_POST['number'];
-    $number = filter_var($number, FILTER_SANITIZE_STRING);
-    $email = $_POST['email'];
-    $email = filter_var($email, FILTER_SANITIZE_STRING);
-    $method = $_POST['method'];
-    $method = filter_var($method, FILTER_SANITIZE_STRING);
-    $address = $_POST['address'];
-    $address = filter_var($address, FILTER_SANITIZE_STRING);
-    $total_products = $_POST['total_products'];
-    $total_price = $_POST['total_price'];
+    $name = isset($_POST['name']) ? filter_var($_POST['name'], FILTER_SANITIZE_STRING) : '';
+    $number = isset($_POST['number']) ? filter_var($_POST['number'], FILTER_SANITIZE_STRING) : '';
+    $email = isset($_POST['email']) ? filter_var($_POST['email'], FILTER_SANITIZE_STRING) : '';
+    $method = isset($_POST['method']) ? filter_var($_POST['method'], FILTER_SANITIZE_STRING) : '';
+    $address = isset($_POST['address']) ? filter_var($_POST['address'], FILTER_SANITIZE_STRING) : '';
+    $total_products = isset($_POST['total_products']) ? $_POST['total_products'] : '';
+    $total_price = isset($_POST['total_price']) ? $_POST['total_price'] : '';
 
-    $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+    $check_cart = $conn->prepare("SELECT * FROM cart WHERE user_id = ?");
     $check_cart->execute([$user_id]);
 
-    if ($check_cart->rowCount() > 0) {
-        if ($address == '') {
-            $message[] = 'please add your address!';
-        } else {
-            $placed_on = date("Y-m-d H:i:s");
-
-            $payment_status = 'Pending';
-
-            $insert_order = $conn->prepare("INSERT INTO `orders` (user_id, name, number, email, method, address, total_products, total_price, placed_on, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price, $placed_on, $payment_status]);
-
-            $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
-            $delete_cart->execute([$user_id]);
-
-            $message[] = 'Order placed successfully!';
-        }
+    if ($address == '') {
+        $message[] = 'Please add your address!';
     } else {
-        $message[] = 'Your cart is empty';
+        // Address is not empty, proceed with order placement.
+        $placed_on = date("Y-m-d H:i:s");
+        $payment_status = 'Pending';
+
+        $insert_order = $conn->prepare("INSERT INTO orders (user_id, name, number, email, method, address, total_products, total_price, placed_on, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price, $placed_on, $payment_status]);
+
+        $delete_cart = $conn->prepare("DELETE FROM cart WHERE user_id = ?");
+        $delete_cart->execute([$user_id]);
+
+        // Reset the order information
+        $total_products = '';
+        $total_price = 0;
+
+        $message[] = 'Order placed successfully!';
     }
 }
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -80,13 +75,13 @@ if (isset($_POST['submit'])) {
     <section class="checkout bg-gray-100 min-h-screen flex items-center justify-center w-full md:px-10">
         <div class="w-full bg-white rounded shadow-lg">
             <form action="" method="post" class="p-4 grid justify-items-center">
-                <h1 class="text-2xl font-bold text-center mb-4">Info Pesananan</h1>
+                <h1 class="text-2xl font-bold text-center mb-4">Info Pesanan</h1>
 
                 <div class="cart-items mb-4">
                     <?php
                         $grand_total = 0;
                         $cart_items = [];
-                        $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+                        $select_cart = $conn->prepare("SELECT * FROM cart WHERE user_id = ?");
                         $select_cart->execute([$user_id]);
                         if ($select_cart->rowCount() > 0) {
                             while ($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)) {
@@ -94,12 +89,12 @@ if (isset($_POST['submit'])) {
                                 $total_products = implode($cart_items);
                                 $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);
                     ?>
-
-                    <span class="name"><?= $fetch_cart['name']; ?></span>
-                    <span>.............................................</span>
-                    <span class="price">Rp.
-                        <?= number_format($fetch_cart['price'] * $fetch_cart['quantity'], 0, ',', '.'); ?>,000</span>
-
+                     <div class="flex items-center justify-between">
+                        <span class="name text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl"><?= $fetch_cart['name']; ?></span>
+                        <span class="text-gray-600">.............................................</span>
+                        <span class="price text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">Rp.
+                            <?= number_format($fetch_cart['price'] * $fetch_cart['quantity'], 0, ',', '.'); ?>,000</span>
+                    </div>
                     <?php
                      }
                   } else {
@@ -110,7 +105,7 @@ if (isset($_POST['submit'])) {
 
                 <p class="grand-total flex flex-col justify-center items-center">
                     <span class="name text-xl font-bold">Total Keseluruhan:</span>
-                    <span class="price font-semibold">Rp. <?= number_format($grand_total, 0, ',', '.'); ?>,000</span>
+                    <span class="price font-semibold text-red-600">Rp. <?= number_format($grand_total, 0, ',', '.'); ?>,000</span>
                 </p>
 
                 <div class="user-info mt-4 md:grid grid-cols-3 gap-40 px-4">
@@ -144,13 +139,13 @@ if (isset($_POST['submit'])) {
                                 <option value="" disabled selected>Pilih Metode Pembayaran</option>
                                 <option value="cod">Bayar Langsung</option>
                                 <option value="debit-card">Debit Card</option>
-                                <option value="qr-code">QR Code</option>
+                                <option value="qr-code">QR Payment</option>
                                 <option value="pay-later">PayLater</option>
                             </select>
                         </label>
                         <input type="submit" value="Checkout" name="submit" class="btn bg-transparent hover:bg-blue-100 text-blue-500 border-2 border-blue-500 py-2 text-center rounded-full mt-4 <?php if ($fetch_profile['address'] == '') {
-                        echo 'cursor-not-allowed';
-                    } ?>">
+                             echo 'cursor-not-allowed';
+                        } ?>">
                     </div>
                 </div>
             </form>

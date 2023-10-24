@@ -13,7 +13,7 @@ if (isset($message)) {
 <!-- Header Section -->
 <header class="bg-blue-600 p-4">
     <section class="container mx-auto flex items-center justify-between">
-        <a href="home.php" class="text-2xl font-bold text-white">Webpro Resto Kelompok 5 - B</a>
+        <a href="home.php" class="text-2xl font-bold text-white">IF330-B Kelompok 5 Resto </a>
         <div class="hidden md:flex md:items-center">
             <nav class="text-center md:text-left">
                 <a href="home.php" class="text-white hover:underline p-2 text-sm md:text-base">Home</a>

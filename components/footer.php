@@ -50,5 +50,5 @@
          </div>
       </div>
    </div>
-   <div class="credit text-center bg-blue-700 p-1 font-semibold text-sm text-blue-200">&copy; copyright @ <?= date('Y'); ?> | all rights reserved!</div>
+   <div class="credit text-center bg-blue-700 p-1 font-semibold text-sm text-blue-200">&copy; copyright @ <?= date('Y'); ?> | melayani anda dengan baik!</div>
 </footer>
