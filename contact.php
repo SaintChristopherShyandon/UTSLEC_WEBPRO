@@ -62,7 +62,7 @@ if(isset($_POST['send'])){
     <div class="bg-gray-200 p-4">
         <h3 class="text-2xl text-center">Kontak Kami</h3>
         <p class="mt-2 text-center">
-            <a href="home.php">Home</a>
+            <a href="index.php">Home</a>
             <span class="mx-2">/</span>
             <span>Contact</span>
         </p>

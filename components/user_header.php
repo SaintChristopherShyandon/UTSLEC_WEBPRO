@@ -13,10 +13,10 @@ if (isset($message)) {
 <!-- Header Section -->
 <header class="bg-blue-600 p-4">
     <section class="container mx-auto flex items-center justify-between">
-        <a href="home.php" class="text-2xl font-bold text-white">IF330-B Kelompok 5 Resto </a>
+        <a href="index.php" class="text-2xl font-bold text-white">IF330-B Kelompok 5 Resto </a>
         <div class="hidden md:flex md:items-center">
             <nav class="text-center md:text-left">
-                <a href="home.php" class="text-white hover:underline p-2 text-sm md:text-base">Home</a>
+                <a href="index.php" class="text-white hover:underline p-2 text-sm md:text-base">Home</a>
                 <a href="about.php" class="text-white hover:underline p-2 text-sm md:text-base">About</a>
                 <a href="menu.php" class="text-white hover:underline p-2 text-sm md:text-base">Menu</a>
                 <a href="orders.php" class="text-white hover:underline p-2 text-sm md:text-base">Orders</a>
