@@ -62,6 +62,8 @@ if(isset($_POST['update'])){
 
 <body class="bg-white">
     <?php include '../components/admin_header.php' ?>
+    <?php include '../components/back_to_dashboard.php' ?>
+
     <section class="update-product bg-blue-100 p-6">
         <h1 class="text-blue-600 text-3xl mb-6">Update Product</h1>
 

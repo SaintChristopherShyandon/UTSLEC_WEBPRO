@@ -80,6 +80,8 @@ if(isset($_GET['delete'])){
 <body class="bg-white">
 
     <?php include '../components/admin_header.php' ?>
+    <?php include '../components/back_to_dashboard.php' ?>
+
     <section class="p-8">
 
         <form action="" method="POST" enctype="multipart/form-data"

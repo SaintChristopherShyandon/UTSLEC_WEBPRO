@@ -72,6 +72,8 @@ if(isset($_POST['submit'])){
 <body class="bg-white">
 
     <?php include '../components/admin_header.php' ?>
+    <?php include '../components/back_to_dashboard.php' ?>
+
     <section class="form-container flex items-center justify-center min-h-screen">
         <form action="" method="POST"
             class="bg-white border border-black rounded-md shadow-md p-8 text-center w-80 max-w-2xl">

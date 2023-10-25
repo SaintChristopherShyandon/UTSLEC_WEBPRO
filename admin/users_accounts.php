@@ -36,6 +36,7 @@ if (isset($_GET['delete'])) {
 <body>
 
     <?php include '../components/admin_header.php' ?>
+    <?php include '../components/back_to_dashboard.php' ?>
 
     <section class="bg-white">
         <h1 class="text-blue-600 text-3xl text-center my-8">Users Account</h1>
