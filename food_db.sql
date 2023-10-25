@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 24, 2023 at 05:53 PM
+-- Generation Time: Oct 25, 2023 at 03:19 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,7 +38,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `password`) VALUES
-(1, 'admin', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2');
+(3, 'bev', 'be38b07102450d04393538f914c35a5db18e860f');
 
 -- --------------------------------------------------------
 
@@ -61,8 +61,27 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`) VALUES
-(1, 12, 2, 'Bakso', 8, 1, 'bakso.jpg'),
-(2, 12, 6, 'Rendang', 13, 1, 'rendang.jpg');
+(1, 2, 6, 'Rendang', 13, 1, 'rendang.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` int(100) NOT NULL,
+  `user_id` int(100) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `number` varchar(10) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `method` varchar(50) NOT NULL,
+  `address` varchar(500) NOT NULL,
+  `total_products` varchar(1000) NOT NULL,
+  `total_price` int(100) NOT NULL,
+  `placed_on` date NOT NULL DEFAULT current_timestamp(),
+  `payment_status` varchar(20) NOT NULL DEFAULT 'pending'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -125,7 +144,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `number`, `password`, `address`) VALUES
-(1, 'saint', 'saintcs44@gmail.com', '0812924525', '4d4ccdd9e0be83fd5af04353b9166f3cf835c0c5', 'asdad, dasdas, asda, asdas, asda, 123123');
+(2, 'bev', 'verlytan11@gmail.com', '0821570444', 'be38b07102450d04393538f914c35a5db18e860f', 'B3, Tangerang, Tangsel, Tangerang, Jl. allogio, 15231'),
+(3, 'saint', 'saint@gmail.com', '0821', 'a9993e364706816aba3e25717850c26c9cd0d89d', '');
 
 --
 -- Indexes for dumped tables
@@ -141,6 +161,12 @@ ALTER TABLE `admin`
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -163,13 +189,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -181,7 +213,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
